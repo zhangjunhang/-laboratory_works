@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo -e Название файла, Расширение файла, Размер файла\(bytes\), Дата последнего изменения, Длительность, Права доступа > "files_info.csv"
+
+find . -name "*"|while read fname; do
+
+	name=$(basename "$fname")
+
+	mime_t=$(file -b --mime-type "$fname")
+	IFS='/' read -ra type_ext_arr <<< "$mime_t"
+	file_type=${type_ext_arr[0]}   # тип файла
+	file_ext="${name##*.}"     # расширение файла
+	file_size=$(stat --format='%s' "$fname")  # размер файла bytes
+	last_modify=$(stat --format='%y' "$fname")  # дата последнего изменения данных файла human-readable
+	
+	
+	# находим длительность для аудио и видео
+	if [ "$file_type" = "audio" ];
+	then
+		dur=$(mediainfo --Inform="Audio;%Duration%" $fname)
+	elif [ "$file_type" = "video" ];
+	then
+		dur=$(mediainfo --Inform="Video;%Duration%" $fname)
+	else
+		dur=0
+	fi
+	# дополнительные данные
+	rights=$(stat --format='%A' "$fname")  # права доступа human-readable
+			
+	# запись в файл
+	echo -e $name, $file_ext, $file_size, $last_modify, $dur, $rights>> "files_info.csv"
+
+done
