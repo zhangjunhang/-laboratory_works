@@ -1,0 +1,2 @@
+moving
+-DCMAKE_BUILD_TYPE=RelWithDebInfo -DCATKIN_DEVEL_PREFIX=C:\Workspace_turtle_1\devel -DCMAKE_INSTALL_PREFIX=C:\Workspace_turtle_1\install -G NMake Makefiles

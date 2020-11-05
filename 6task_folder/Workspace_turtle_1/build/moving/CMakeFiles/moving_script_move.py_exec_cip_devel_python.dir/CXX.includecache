@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Workspace_turtle_1/build/moving/catkin_generated/add_python_executable/moving_script_move.py_exec_cip_devel_python/script_move.cpp
+fstream
+-
+iostream
+-
+string
+-
+windows.h
+-
+

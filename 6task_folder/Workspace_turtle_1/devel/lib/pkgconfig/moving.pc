@@ -1,0 +1,8 @@
+prefix=C:/Workspace_turtle_1/devel
+
+Name: moving
+Description: Description of moving
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
